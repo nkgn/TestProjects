@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="projectSuite">
+    <test name="register">
+       <!-- <parameter name="username" value="n_kgn"/>
+
+        <parameter name="password" value="kgn"/>-->
+
+        <classes>
+            <!--class name="testscripts.RegisterAllTest">
+                <methods>
+                    <include name="registerUserTest"/>
+                    <include name="registerEditorTest"/>
+                    <include name="registerMediaTest"/>
+                    <include name="registerCityJournalistTest"/>
+                    <include name="activateAllAccountTest"/>
+                    <exclude name="loginTest"/>
+                    <exclude name="forgotPwdTest"/>
+                </methods>
+            </class-->
+            <class name="testscripts.RegisterAsCityJournalistTest">
+                <methods>
+                    <exclude name="registerCityJournalistTest"/>
+                    <exclude name="activateAccountTest"/>
+                    <exclude name="loginTest"/>
+                    <exclude name="uploadVideo"/>
+                </methods>
+            </class>
+           <class name="testscripts.RegisterAsUserTest">
+                <methods>
+                    <include name="registerUserTest"/>
+                    <include name="activateAccountTest"/>
+                    <include name="loginTest"/>
+                    <exclude name="forgotPwdTest"/>
+                </methods>
+            </class>
+        <class name="testscripts.RegisterAsMediaTest">
+            <methods>
+                <exclude name="registerMediaTest"/>
+                <exclude name="activateAccountTest"/>
+                <exclude name="loginTest"/>
+                <exclude name="forgotPwdTest"/>
+            </methods>
+        </class>
+
+        <class name="testscripts.RegisterAsEditorTest">
+                <methods>
+                    <exclude name="registerEditorTest"/>
+                    <!--editor needs approval before activation -->
+                    <exclude name="activateAccountTest"/>
+                    <exclude name="loginTest"/>
+                    <exclude name="forgotPwdTest"/>
+
+                </methods>
+            </class>
+
+
+        </classes>
+    </test>
+</suite>
+
