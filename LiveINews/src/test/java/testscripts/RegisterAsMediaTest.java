@@ -16,7 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import data.GenerateRegistrationTestData;
+import data.GenerateRegData;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -34,7 +34,7 @@ public class RegisterAsMediaTest
     HomePage homePage ;
     LoginAndRegistrationPage register;
     ActivateAccountPage activateAcc ;
-    GenerateRegistrationTestData loginData;
+    GenerateRegData loginData;
 
     @BeforeClass
     public void setUp()  {
@@ -58,7 +58,7 @@ public class RegisterAsMediaTest
         }
         homePage = new HomePage(driver);
         activateAcc = new ActivateAccountPage(driver);
-        loginData = new GenerateRegistrationTestData();
+        loginData = new GenerateRegData();
         emailID = loginData.email;
         loginData.email = loginData.email + "@mailinator.com";
         //loginData.email = loginData.email + "@getnada.com";

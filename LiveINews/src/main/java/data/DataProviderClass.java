@@ -13,59 +13,39 @@ public class DataProviderClass {
 
     private static final Logger log = LogManager.getLogger(DataProviderClass.class.getName());
 
-/**********using different data provider methods
-/*
-    @DataProvider(name="fieldsInputs")
-    public static Object[][] getLoginData(){
-        GenerateRegistrationTestData loginData = new GenerateRegistrationTestData();
-
-        return new Object[][]{
-
-                {loginData.accountName,loginData.password},
-
-        };
-
-    }
-    @DataProvider(name="uploadVideofieldsInputs")
-    public static Object[][] uploadVideofieldsInputs(){
-        GenerateMyAccountTestData randomData = new GenerateMyAccountTestData();
-
-        return new Object[][]{
-
-                {randomData.videoTitle,randomData.videoDescription, randomData.videoCategory, randomData.videoSubCategory}
-
-        };
-
-    }
-
-*/
-
 /*********Using single data provider method with method parameter ****/
 
     @DataProvider(name="SearchProvider")
     public Object[][] getDataFromDataprovider(Method m) {
-        GenerateRegistrationTestData loginData = new GenerateRegistrationTestData();
+
         if (m.getName().equalsIgnoreCase("uploadVideo")) {
-            GenerateMyAccountTestData randomData = new GenerateMyAccountTestData();
+            GenerateMyAccData.generateMyAccountData();
             return new Object[][]{
-                    {randomData.videoTitle, randomData.videoDescription,
-                            randomData.videoCategory, randomData.videoSubCategory,randomData.videoLocation}
+                    {GenerateMyAccData.videoTitle, GenerateMyAccData.videoDescription,
+                            GenerateMyAccData.videoCategory, GenerateMyAccData.videoSubCategory,GenerateMyAccData.videoLocation}
             };
 
         } else if (m.getName().equalsIgnoreCase("registerCityJournalistTest")) {
+            GenerateRegData.generateRegistrationData();
             return new Object[][]{
-                    {loginData.email,loginData.password,loginData.accountName,
-                            loginData.firstName, loginData.lastName, loginData.address,
-                            loginData.phone, loginData.zipCode, loginData.country,
-                            loginData.state, loginData.city, loginData.paypal}
+                    {GenerateRegData.email,GenerateRegData.password,GenerateRegData.accountName,
+                            GenerateRegData.firstName, GenerateRegData.lastName, GenerateRegData.address,
+                            GenerateRegData.phone, GenerateRegData.zipCode, GenerateRegData.country,
+                            GenerateRegData.state, GenerateRegData.city, GenerateRegData.paypal}
             };
         }else if (m.getName().equalsIgnoreCase("activateAccountTest")) {
             return new Object[][]{
-                    {loginData.email}
+                    {GenerateRegData.email}
             };
         }else if (m.getName().equalsIgnoreCase("registerUserTest")) {
+            GenerateRegData.generateRegistrationData();
             return new Object[][]{
-                    {loginData.email, loginData.password,loginData.accountName}
+                    {GenerateRegData.email, GenerateRegData.password,GenerateRegData.accountName}
+            };
+
+        }else if (m.getName().equalsIgnoreCase("loggingIn")) {
+            return new Object[][]{
+                    {GenerateRegData.accountName,GenerateRegData.password}
             };
 
         }else{

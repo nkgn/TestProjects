@@ -1,24 +1,17 @@
 package testscripts;
 
-import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import pageresources.Utilities;
+import org.testng.annotations.*;
+import pageresources.CopyDriverInstance;
 import pages.ActivateAccountPage;
 import pages.HomePage;
 import pages.LoginAndRegistrationPage;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import data.GenerateRegistrationTestData;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.File;
 import java.util.concurrent.TimeUnit;
 import data.DataProviderClass;
 import pages.MyAccountPage;
@@ -38,16 +31,13 @@ public class RegisterAsUserTest
     LoginAndRegistrationPage register;
     ActivateAccountPage activateAcc ;
     MyAccountPage myAccPage ;
-    String emailUserName="";
-    String username="",pwd="";
 
 
-    @BeforeClass
+    @BeforeTest
     public void setUp()  {
 
         //System.setProperty("webdriver.gecko.driver", "C:/Users/nitu/Desktop/SeleniumWebDriver/geckodriver.exe");
         //driver = new FirefoxDriver();
-
 
         System.setProperty("webdriver.chrome.driver", "C:/Users/nitu/Desktop/SeleniumWebDriver/chromedriver_win32/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -72,25 +62,21 @@ public class RegisterAsUserTest
         activateAcc = new ActivateAccountPage(driver);
         myAccPage = new MyAccountPage(driver);
         register = new LoginAndRegistrationPage(driver);
-
-
+        CopyDriverInstance.driver = driver ; // to store driver instance
     }
     //@Test(priority = 0)
     /***** Test automate populating fields for registering city journalist******/
-    @Test(priority=0,enabled=true,dataProvider = "SearchProvider", dataProviderClass = DataProviderClass.class)
+    @Test(enabled=true,dataProvider = "SearchProvider", dataProviderClass = DataProviderClass.class)
     public void registerUserTest(String email,String password,String accountName) throws InterruptedException {
         System.out.println("Inside test");
-        System.out.println("Inside test register city journal");
+        System.out.println("Inside test register user");
         log.info("This message is from test method");
         homePage.clickOnLoginTab();
         register.selectAccountType(0); //index for user is 0 in account type
         register.fillEmailTextBox(email + "@getnada.com");  // create getnada email id
-        emailUserName = email ;  // store email id for activation of account
         register.fillPwdTextBox(password);
         register.fillConfirmPwdTextBox(password);
         register.fillAccountName(accountName);
-        username=accountName;  //store username for login
-        pwd=password;   //store pwd for login register.clickNext();
         register.clickNext();
         Thread.sleep(9000);
         //Thread.sleep(6000);
@@ -103,8 +89,7 @@ public class RegisterAsUserTest
         homePage.clickOnLoginTab();
     }
 
-
-
+/*
     @Test(dependsOnMethods = { "registerUserTest" },priority = 1)
     public void activateAccountTest()throws InterruptedException{
         System.out.println("inside activate " );
@@ -122,7 +107,6 @@ public class RegisterAsUserTest
     @Test(enabled=false,priority = 3)
     public void forgotPwdTest(){
         register.clickOnLostPasswordLink();
-
     }
 
     @AfterMethod
@@ -152,11 +136,12 @@ public class RegisterAsUserTest
                 System.out.println("Exception while taking screenshot "+e.getMessage());
             }
         }
+    }*/
 
-    }
-    @AfterClass
-    public void tearDown(){
+    @AfterTest
+    public void tearDown()throws InterruptedException{
         driver.close();
         driver.quit();
+        Thread.sleep(5000);
     }
 }

@@ -8,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageresources.Utilities;
 
 import java.awt.*;
@@ -48,7 +50,17 @@ public class MyAccountPage
     @FindBy(xpath="//*[@id='wb-upload-form']/div[10]/div/input")
     WebElement submitButton ;
 
+    @FindBy(xpath="//div[starts-with(@id,'product_id')]//span[@class='my-video-item-title']")
+    WebElement titleLabel;
+
     //@FindBy(xpath="//*[@id='wb-upload-form']/div[10]/div/input")
+
+    @FindBy(xpath="//div[starts-with(@id,'product')]/h4[@class='wb-title']")
+    WebElement selectedVideoTitle;
+
+
+    @FindBy(xpath="/html/body/div/div[5]/div[2]/canvas")
+    WebElement videoPlayButton;
 
     public MyAccountPage(WebDriver driver) {
         this.driver = driver;
@@ -81,6 +93,9 @@ public class MyAccountPage
         robot.keyPress(java.awt.event.KeyEvent.VK_ENTER);
     }
 
+    public void clickOnVideoPlayButton(){
+        videoPlayButton.click();
+    }
 
 
 
@@ -140,4 +155,16 @@ public class MyAccountPage
         return uploadVideosTab;
     }
 
+    public String getTitleLabel(){
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(titleLabel));
+        return titleLabel.getText();
+    }
+
+    public void clickOnVideoTitle(){
+        titleLabel.click();
+    }
+
+    public String getSelectedVideoTitleText(){
+         return selectedVideoTitle.getText();
+    }
 }
