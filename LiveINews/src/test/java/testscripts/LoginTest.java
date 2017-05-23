@@ -1,5 +1,6 @@
 package testscripts;
 
+import org.testng.Assert;
 import org.testng.annotations.*;
 import pageresources.CopyDriverInstance;
 import pageresources.Utilities;
@@ -32,7 +33,16 @@ public class LoginTest
         reg.fillLoginUserName(accName);
         reg.fillLoginPwd(pwd);
         reg.clickOnLogInButton();
-        Thread.sleep(3000);
+        try {
+            //User is taken to My Account page if logged in successful
+            String expected = "My Account";
+            String actual = reg.getMyAccHeading();
+            Assert.assertEquals(expected, actual);
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+            Assert.fail("Unsuccessful log in");
+        }
     }
 
 

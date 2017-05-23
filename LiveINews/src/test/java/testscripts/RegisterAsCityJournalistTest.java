@@ -43,8 +43,11 @@ public class RegisterAsCityJournalistTest {
     ActivateAccountPage activateAcc;
     MyAccountPage myAccPage;
 
+    /***** setup the environment before any registration *******/
     @BeforeTest
     public void setUp() {
+
+        /***Launch the browser ****/
         //System.setProperty("webdriver.gecko.driver", "C:/Users/nitu/Desktop/SeleniumWebDriver/geckodriver.exe");
         //driver = new FirefoxDriver();
 
@@ -66,6 +69,7 @@ public class RegisterAsCityJournalistTest {
             System.out.println("Exception generated in setUp ");
             e.printStackTrace();
         }
+        /*****create page references **********/
         homePage = new HomePage(driver);
         activateAcc = new ActivateAccountPage(driver);
         myAccPage = new MyAccountPage(driver);
@@ -89,8 +93,6 @@ public class RegisterAsCityJournalistTest {
         register.fillPwdTextBox(password);
         register.fillConfirmPwdTextBox(password);
         register.fillAccountName(accountName);
-        //username=accountName;  //store username for login
-        //pwd=password;   //store pwd for login
         register.fillFirstName(firstName);
         register.fillLastName(lastName);
         register.fillAddress(address);
@@ -111,12 +113,25 @@ public class RegisterAsCityJournalistTest {
         register.clickOnNext();
         Thread.sleep(5000);
         register.clickNext();  // click on submit button to register city journalist
-        //Thread.sleep(7000);
+
+        //Assert that user succesfully registered before activation of account
+        try {
+
+            String expected = "";
+            String actual = "" ; //reg.getMyAccHeading();
+            Assert.assertEquals(expected, actual);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            Assert.fail();
+        }
+
+        Thread.sleep(7000);
         //homePage.clickOnLoginTab();
     }
 
 
-    //****To close driver instance, close and quit *********//*
+    //****To close driver instance, close and quit based on the test tag in testng.xml *********//*
     @AfterTest
     public void tearDown() throws InterruptedException {
         driver.close();

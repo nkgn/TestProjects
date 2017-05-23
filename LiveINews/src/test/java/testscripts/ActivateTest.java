@@ -6,14 +6,14 @@ import pageresources.Utilities;
 import org.openqa.selenium.WebDriver;
 import data.DataProviderClass;
 
-
+//***Activation Test to activate the user/city journalist/media after registration *********/
 public class ActivateTest
 {
     private WebDriver driver ;
 
-    String emailUserName="";
+    //String emailUserName="";
 
-
+    /*****To get reference of driver instance before class starts ****/
     @BeforeClass
     public void setUp() {
         driver= CopyDriverInstance.driver ;

@@ -24,18 +24,18 @@ public class RegisterAsUserTest
     private String baseURL = "";
 
     //Logger class to log error messages to logs folder under project
-    private static final Logger log = LogManager.getLogger(RegisterAsCityJournalistTest.class.getName());
+    private static final Logger log = LogManager.getLogger(RegisterAsUserTest.class.getName());
 
     private String expectedTitle = "";
-    HomePage homePage ;
+    HomePage homePage;
     LoginAndRegistrationPage register;
-    ActivateAccountPage activateAcc ;
-    MyAccountPage myAccPage ;
+    ActivateAccountPage activateAcc;
+    MyAccountPage myAccPage;
 
-
+    /***** setup the environment before any registration *******/
     @BeforeTest
     public void setUp()  {
-
+        /***Launch the browser ****/
         //System.setProperty("webdriver.gecko.driver", "C:/Users/nitu/Desktop/SeleniumWebDriver/geckodriver.exe");
         //driver = new FirefoxDriver();
 
@@ -58,14 +58,15 @@ public class RegisterAsUserTest
             e.printStackTrace();
             Assert.fail();
         }
+        /**Create object references *****/
         homePage = new HomePage(driver);
         activateAcc = new ActivateAccountPage(driver);
         myAccPage = new MyAccountPage(driver);
         register = new LoginAndRegistrationPage(driver);
         CopyDriverInstance.driver = driver ; // to store driver instance
     }
-    //@Test(priority = 0)
-    /***** Test automate populating fields for registering city journalist******/
+
+    /***** Test automate populating fields for registering user******/
     @Test(enabled=true,dataProvider = "SearchProvider", dataProviderClass = DataProviderClass.class)
     public void registerUserTest(String email,String password,String accountName) throws InterruptedException {
         System.out.println("Inside test");
@@ -73,7 +74,9 @@ public class RegisterAsUserTest
         log.info("This message is from test method");
         homePage.clickOnLoginTab();
         register.selectAccountType(0); //index for user is 0 in account type
-        register.fillEmailTextBox(email + "@getnada.com");  // create getnada email id
+        //register.fillEmailTextBox(email + "@getnada.com");  // create getnada email id
+        register.fillEmailTextBox(email + "@mailinator.com");  // create getnada email id
+
         register.fillPwdTextBox(password);
         register.fillConfirmPwdTextBox(password);
         register.fillAccountName(accountName);
@@ -88,56 +91,7 @@ public class RegisterAsUserTest
         Thread.sleep(7000);
         homePage.clickOnLoginTab();
     }
-
-/*
-    @Test(dependsOnMethods = { "registerUserTest" },priority = 1)
-    public void activateAccountTest()throws InterruptedException{
-        System.out.println("inside activate " );
-        Utilities.activateAccount(driver,emailUserName);
-    }
-
-    @Test(priority=2,enabled=true)
-    public void loginTest() throws InterruptedException{
-        System.out.println("inside login test");
-        homePage.clickOnLoginTab();
-        Utilities.loginAcc(driver,username,pwd,register);
-        Thread.sleep(3000);
-    }
-
-    @Test(enabled=false,priority = 3)
-    public void forgotPwdTest(){
-        register.clickOnLostPasswordLink();
-    }
-
-    @AfterMethod
-    public void tearIt(ITestResult result)
-    {
-        System.out.println("inside after method , result status is " + result.getStatus());
-        // ITestResult describes the result of the test
-        if(ITestResult.FAILURE==result.getStatus())
-        {
-            try
-            {
-                //Indicates a driver that can capture a screenshot and store it in different ways.
-
-                // selenium interface TakesScreenshot
-                TakesScreenshot ts=(TakesScreenshot)driver;
-                File source=ts.getScreenshotAs(OutputType.FILE);
-
-                // result.getName() will return name of test case so that screenshot name will be same
-                FileUtils.copyFile(source, new File("./Screenshots/"+result.getName()+".png"));
-                //creates screenshot folder under project and stores screenshot
-                //public class FileUtils 	extends Object  General file manipulation utilities.
-
-                System.out.println("Screenshot taken");
-            }
-            catch (Exception e)
-            {
-                System.out.println("Exception while taking screenshot "+e.getMessage());
-            }
-        }
-    }*/
-
+    //****To close driver instance, close and quit based on the test tag in testng.xml *********//*
     @AfterTest
     public void tearDown()throws InterruptedException{
         driver.close();

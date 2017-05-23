@@ -31,15 +31,22 @@ public class Utilities {
 
     public static void activateAccount(WebDriver driver, String emailUsername) throws InterruptedException {
         ActivateAccountPage activateAcc = new ActivateAccountPage(driver);
-        //System.out.println("inside activate ");
+
         try {
             // //create url to specific mailinator account inbox
             //String s1 = "http://www.mailinator.com/inbox2.jsp?public_to=" + emailUsername + "#/#public_maildirdiv";
             String s1= "http://www.mailinator.com/inbox2.jsp?to="+emailUsername+"#/#public_maildirdiv" ;
             //create url to specific getnada account inbox
             //String s1 = "https://app.getnada.com/inbox/" + emailUsername + "@getnada.com";
+
+            // navigate to mailinator/getnada inbox to click on link send by LIveINews
             driver.get(s1);
             Thread.sleep(3000);
+            String actualResult = activateAcc.getMailinatorInboxText();
+            String expectedResult = emailUsername + "@mailinator.com" ;
+            //Assert if mailinator page is opened
+            Assert.assertTrue(actualResult.contains(expectedResult));
+            System.out.println(actualResult);
             log.info("link to getnada/mailinator" + s1);
 
             // from AcctivateAccountPage
@@ -51,7 +58,7 @@ public class Utilities {
             driver.switchTo().frame("publicshowmaildivcontent");   // switch to frame in mailinator inbox
             //for getnada
             //driver.switchTo().frame("idIframe");  //switch to frame in getnada inbox
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             String newlink = activateAcc.clickOnLinkInEmail();
             System.out.println("newlink = " + newlink);
             //driver.get(newlink);
@@ -61,10 +68,10 @@ public class Utilities {
             Thread.sleep(3000);
         } catch (Exception e) {
             e.printStackTrace();
-            //Assert.fail();
+            Assert.fail();
         }
     }
-    public static void loginAcc(WebDriver driver, String username,String pwd,LoginAndRegistrationPage register) throws InterruptedException {
+    /*public static void loginAcc(WebDriver driver, String username,String pwd,LoginAndRegistrationPage register) throws InterruptedException {
         ActivateAccountPage activateAcc = new ActivateAccountPage(driver);
         System.out.println("inside activate ");
         //LoginAndRegistrationPage register = new LoginAndRegistrationPage(driver);
@@ -80,7 +87,7 @@ public class Utilities {
         register.fillLoginUserName(username);
         register.fillLoginPwd(pwd);
         register.clickOnLogInButton();
-    }
+    }*/
 
 
 }

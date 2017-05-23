@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LiveINews.iml" filepath="$PROJECT_DIR$/LiveINews.iml" />
+      <module fileurl="file://C:\Users\nitu\IdeaProjects\TestProjects\LiveINews\LiveINews.iml" filepath="C:\Users\nitu\IdeaProjects\TestProjects\LiveINews\LiveINews.iml" />
     </modules>
   </component>
 </project>

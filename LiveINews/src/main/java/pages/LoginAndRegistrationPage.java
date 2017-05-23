@@ -8,6 +8,8 @@ package pages;
         import org.openqa.selenium.interactions.Mouse;
         import org.openqa.selenium.support.FindBy;
         import org.openqa.selenium.support.PageFactory;
+        import org.openqa.selenium.support.ui.ExpectedConditions;
+        import org.openqa.selenium.support.ui.WebDriverWait;
         import pageresources.Utilities;
         import org.openqa.selenium.support.ui.Select;
 
@@ -103,12 +105,28 @@ public class LoginAndRegistrationPage {
     @FindBy(name="rememberme")
     WebElement rememberme ;
 
+    @FindBy(xpath="//*[@id='page-content']/div/div/h1")
+    WebElement myAccHeading;
+
+    @FindBy(xpath="//*[contains(@id,'post')]/div/div[2]/h1")
+    WebElement registrationSuccessfulMessage;
 
 
     public LoginAndRegistrationPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    public String getMyAccHeading(){
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(myAccHeading));
+        return myAccHeading.getText();
+    }
+
+    public String getRegistrationSuccessfulMessage(){
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(registrationSuccessfulMessage));
+        return registrationSuccessfulMessage.getText();
+    }
+
 
     public void fillLoginUserName(String username){
         loginUsername.sendKeys(username);

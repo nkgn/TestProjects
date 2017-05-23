@@ -50,7 +50,7 @@ public class MyAccountPage
     @FindBy(xpath="//*[@id='wb-upload-form']/div[10]/div/input")
     WebElement submitButton ;
 
-    @FindBy(xpath="//div[starts-with(@id,'product_id')]//span[@class='my-video-item-title']")
+    @FindBy(xpath="//div[starts-with(@id,'product_id')]//span[@class='my-video-item-title']/a")
     WebElement titleLabel;
 
     //@FindBy(xpath="//*[@id='wb-upload-form']/div[10]/div/input")
@@ -161,10 +161,12 @@ public class MyAccountPage
     }
 
     public void clickOnVideoTitle(){
+        Utilities.explicitWaitToClick(driver,20,titleLabel);
         titleLabel.click();
     }
 
-    public String getSelectedVideoTitleText(){
-         return selectedVideoTitle.getText();
+    public String getSelectedVideoTitle(){
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(selectedVideoTitle));
+        return selectedVideoTitle.getText();
     }
 }

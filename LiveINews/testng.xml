@@ -16,12 +16,54 @@
             </class>
             <class name = "testscripts.LoginTest">
                 <methods>
-                    <include name="loggingIn"/>
+                    <exclude name="loggingIn"/>
                 </methods>
             </class>
         </classes>
     </test-->
-
+    <test name="registerMedia">
+       <classes>
+           <class name="testscripts.RegisterAsMediaTest">
+               <methods>
+                   <include name="registerMediaTest"/>
+               </methods>
+           </class>
+           <class name = "testscripts.ActivateTest">
+               <methods>
+                   <include name="activateAccountTest"/>
+               </methods>
+           </class>
+           <class name = "testscripts.LoginTest">
+               <methods>
+                   <include name="loggingIn"/>
+               </methods>
+           </class>
+           <class name = "testscripts.UploadVideoTest">
+               <methods>
+                   <include name="uploadVideo"/>
+               </methods>
+           </class>
+       </classes>
+   </test>
+    <!--test name="registerEditor">
+       <classes>
+           <class name="testscripts.RegisterAsEditorTest">
+               <methods>
+                   <include name="registerEditorTest"/>
+               </methods>
+           </class>
+           <class name = "testscripts.ActivateTest">
+               <methods>
+                   <exclude name="activateAccountTest"/>
+               </methods>
+           </class>
+           <class name = "testscripts.LoginTest">
+               <methods>
+                   <exclude name="loggingIn"/>
+               </methods>
+           </class>
+       </classes>
+   </test>
     <test name="registerCityJournalist">
         <classes>
             <class name="testscripts.RegisterAsCityJournalistTest">
@@ -46,6 +88,6 @@
             </class>
 
         </classes>
-    </test>
+    </test-->
 </suite>
 
