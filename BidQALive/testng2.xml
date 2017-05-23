@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="BidQASuite">
+<test name="loginQA1">
+    <!--parameter name="username" value="nitu"/>
+    <parameter name="password" value="bidqa"/>
+    <parameter name="projectName" value="Travel test"/>
+    <parameter name="price" value="2"/>
+    <parameter name="days" value="2"/-->
+    <classes>
+        <class name="testscripts.QABidTest">
+            <methods>
+
+                <include name="bidForProjectTest" />
+
+            </methods>
+        </class>
+
+    </classes>
+</test>
+<!--test name="loginQA2">
+    <parameter name="username" value="femina"/>
+    <parameter name="password" value="abc123"/>
+    <parameter name="projectName" value="Travel test"/>
+    <parameter name="price" value="3"/>
+    <parameter name="days" value="3"/>
+    <classes>
+        <class name="testscripts.QABidTest">
+            <methods>
+
+                <exclude name="bidForProjectTest" />
+
+            </methods>
+        </class>
+
+    </classes>
+</test>
+
+
+<test name="loginQA3">
+    <parameter name="username" value="siddu1980"/>
+    <parameter name="password" value="siddhu"/>
+    <parameter name="projectName" value="Travel test"/>
+    <parameter name="price" value="1"/>
+    <parameter name="days" value="1"/>
+    <classes>
+        <class name="testscripts.QABidTest">
+            <methods>
+
+                <exclude name="bidForProjectTest" />
+
+            </methods>
+        </class>
+
+    </classes>
+</test-->
+
+</suite>
+

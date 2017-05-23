@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="projectSuite1">
+    <test name="login1">
+            <class name="testscripts.MarkProjectCompleteTest">
+                <methods>
+                    <include name="clearPayments" />
+                    <include name="makeEscrow" />
+                    <include name="releasePayment" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

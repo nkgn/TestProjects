@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="projectSuite">
+    <parameter name="username" value="n_kgn"/>
+    <parameter name="password" value="kgn"/>
+    <parameter name="projectName" value="Travel test"/>
+    <parameter name="projectDes" value="Automation test of travel"/>
+    <test name="login">
+        <classes>
+            <class name="testscripts.PostProjectTest">
+                <methods>
+
+                    <exclude name="testCreateProject" />
+
+                </methods>
+            </class>
+            <class name="testscripts.EditProjectTest">
+                <methods>
+                    <exclude name="testEditProjectDescription" />
+
+                </methods>
+            </class>
+            <class name="testscripts.DeleteProjectTest">
+                <methods>
+
+                    <include name="testDeleteProject" />
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

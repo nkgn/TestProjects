@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="projectSuite">
+    <test name="login">
+        <classes>
+            <class name="testscripts.PostProjectTest">
+                <methods>
+
+                    <include name="testCreateProject" />
+
+                </methods>
+            </class>
+            <class name="testscripts.QABidTest">
+                <methods>
+
+                    <include name="bidForProjectTest" />
+
+                </methods>
+            </class>
+            <class name="testscripts.SelectWinnerTest">
+                <methods>
+
+                    <include name="selectWinner" />
+
+                </methods>
+            </class>
+            <class name="testscripts.CreateTeamTest">
+                <methods>
+                    <include name="newTeamTest" />
+                </methods>
+            </class>
+            <class name="testscripts.SubmitProjectTest">
+                <methods>
+                    <include name="projectDeliveredTest" />
+                </methods>
+            </class>
+            <class name="testscripts.MarkProjectCompleteTest">
+                <methods>
+                    <include name="clearPayments" />
+                    <include name="makeEscrow" />
+                    <include name="releasePayment" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
