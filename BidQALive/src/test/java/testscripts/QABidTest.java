@@ -24,7 +24,7 @@ import data.DataProviderClass;
 public class QABidTest
 {
     private WebDriver driver ;
-    private String baseURL = "";
+
     private HomePage homepage ;
     private LoginPage loginpage;
     private MyAccountPage myaccount ;
@@ -56,7 +56,7 @@ public class QABidTest
     public void bidForProjectTest(String username,String password,
                                   String projectName,String price, String daysToComplete) {
        try{
-           System.out.println(username + " " + price + "  " + daysToComplete);
+
            Thread.sleep(6000);
            Utilities.loginAccount(username, password, driver, loginpage, homepage);
            Thread.sleep(8000);

@@ -22,13 +22,12 @@ public class Utilities {
         new WebDriverWait(driver,time).until(ExpectedConditions.elementToBeClickable(element));
     }
 
-    /* used to login user based on creditials passed as arguments */
+    /* used to login user based on credentials passed as arguments */
     public static void loginAccount (String username, String password,
                                            WebDriver driver, LoginPage lp,
                                            HomePage hp)throws InterruptedException
     {
 
-        System.out.println(driver.getCurrentUrl());
         String baseURL="http://test.bidqa.com";
         driver.get(baseURL);
         Thread.sleep(5000);

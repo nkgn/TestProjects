@@ -46,7 +46,7 @@ public class CreateTeamTest
     //@Parameters({"username","password"}) // username and password from xml file
     public void createTeamSetup()  {
 
-        System.out.println("firstTimeExecution of create team setup  = "+ firstTimeExecution  );
+        log.info("firstTimeExecution of create team setup  = "+ firstTimeExecution  );
         if(firstTimeExecution == true) {
             driver = Utilities.driver;
             homepage = new HomePage(driver);
@@ -117,7 +117,6 @@ public class CreateTeamTest
                     //get created team name
                     WebElement projNameEle = we.findElement(By.xpath(projectNameElement));
 
-                    //Assert.assertEquals(projNameEle.getText(),projectName);
                     // get add user button for the selected team
                     WebElement addUserEle = we.findElement(By.xpath(addUserElement));
                     addUserEle.click();
@@ -125,6 +124,7 @@ public class CreateTeamTest
                 }catch(Exception e)
                 {
                     System.out.println("No elements found");
+
                 }
             }
 

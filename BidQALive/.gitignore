@@ -1,3 +1,5 @@
 /.idea/
+/target
 debug.log
 app.log
+/logs

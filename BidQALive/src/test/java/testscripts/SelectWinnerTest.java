@@ -1,4 +1,4 @@
-/* After QAs have made a bid for project, project owner los in and select all the QAs as winners*/
+/* After QAs have made a bid for project, project owner logs in and select all the QAs as winners*/
 /* test method is used to select all the QAs who have bid as project winners */
 
 
@@ -52,7 +52,7 @@ public class SelectWinnerTest
     //@Parameters({"username","password"}) // login parameters for project owner are taken from xml file
     public void selectWinnerSetup()  {
 
-        System.out.println("firstTimeExecution of select winner setup = "+ firstTimeExecution  );
+        log.info("firstTimeExecution of select winner setup = "+ firstTimeExecution );
         if(firstTimeExecution == true) {
             log.info("Inside select winner setup   " );
             driver = Utilities.driver;
@@ -103,7 +103,6 @@ public class SelectWinnerTest
 
             // click on select winner for all 3 QA engineers and click on choose winner button
 
-            // select winner xpath="//div[@id='my_bids']/div[3]/div[1]/a"
             //broken xpath for QAname and Select Winner link
             //same link can be used to create xpaths for  names of QA and Project winner titles
 

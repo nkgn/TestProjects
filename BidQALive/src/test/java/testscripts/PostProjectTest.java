@@ -1,3 +1,4 @@
+
 /*This class is used as base class to set up environment for all the tests*
 the preconditions like launch the browser and user logged in
 
@@ -143,7 +144,7 @@ public class PostProjectTest
             payPalPage.fillPayPalPwd("123123123123");
             payPalPage.clickOnPayPalLogInButton();
             driver.switchTo().defaultContent();
-            Thread.sleep(7000);
+            Thread.sleep(9000);
             //((JavascriptExecutor) driver).executeScript("scroll(0,200)");
             payPalPage.clickOnPayPalConfirmButton();
             Thread.sleep(7000);
